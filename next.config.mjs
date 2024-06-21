@@ -1,4 +1,12 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {};
+import withTwin from "./config/withTwin.mjs";
 
-export default nextConfig;
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  webpack: config => {
+    config.resolve.fallback = { fs: false, module: false }
+
+    return config
+  },
+};
+
+export default withTwin(nextConfig);
